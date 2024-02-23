@@ -23,8 +23,8 @@ public class BoardView {
             );
         }
 
-        for(BoardDTO article : articles){
-            System.out.println(article.toString());
-        }
+        articles.forEach(i ->{
+            System.out.println(i.toString());
+        });
     }
 }
