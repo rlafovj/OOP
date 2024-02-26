@@ -11,8 +11,7 @@ import java.util.Scanner;
 
 public class KaupView {
     //카우프 지수 구하는 프로그램
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc){
         UtilService util = UtilServiceImpl.getInstance();
         MemberDTO member = new MemberBuilder()
                 .height(util.createRandomDouble(150, 50))

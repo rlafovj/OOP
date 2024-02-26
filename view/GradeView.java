@@ -12,10 +12,9 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class GradeView {
-    public static void main(String[] args) {
+    public static void main(Scanner sc) {
         System.out.printf("이름 : \n국어점수 : \n영어점수 : \n수학점수 : \n평균 점수를 구하시오\n");
 
-        Scanner sc = new Scanner(System.in);
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
         MemberDTO student = new MemberBuilder()
