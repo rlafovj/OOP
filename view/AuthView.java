@@ -5,7 +5,7 @@ import model.MemberDTO;
 
 import java.util.Scanner;
 
-public class JoinView {
+public class AuthView {
     public static void main(Scanner sc){
         System.out.print("ID, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, 주소, 직업 순으로 입력\n");
         MemberDTO member = new MemberBuilder()

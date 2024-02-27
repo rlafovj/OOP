@@ -11,4 +11,6 @@ public interface UtilService {
     String createRandomContent();
 
     String createRandomCompany();
+
+    String createRandomUsername();
 }

@@ -67,5 +67,16 @@ public class UtilServiceImpl implements UtilService {
         return companise[createRandomInteger(0, 5)];
     }
 
+    @Override
+    public String createRandomUsername() {
+        //char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        String username = "";                   //{"Alpha", "Bravo", "Charlie", "Delta", "Foxtrot"}
+        for(int i = 0; i < 5; i++){
+        username += String.valueOf((char)('a' + this.createRandomInteger(0, 26)));
+
+        }
+        return username;
+    }
+
 
 }
