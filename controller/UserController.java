@@ -26,6 +26,11 @@ public class UserController {
         users = auth.addUsers();
     }
 
+    public void join(Scanner sc) {
+        this.auth = AuthServiceImpl.getInstance();
+        auth.join(sc);
+    }
+
     public void findUser(String username){
         if(users.containsKey(username)){
             System.out.println(users.get(username));
@@ -36,11 +41,14 @@ public class UserController {
 //        for(Map.Entry<String, MemberDTO> entry : users.entrySet()) {
 //            System.out.println(entry.getValue());
 //        }
-        users.forEach((key, value) -> System.out.println(value));
+        users.forEach((key, value) -> {
+            System.out.println(value);
+            System.out.println();
+        });
     }
     public void count(){
         this.auth = AuthServiceImpl.getInstance();
-        System.out.printf("회원수는 %d 명 입니다.", auth.count());
+        System.out.printf("회원수는 %d 명 입니다.\n", auth.count());
     }
 }
 

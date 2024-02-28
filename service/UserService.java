@@ -5,6 +5,7 @@
 //import java.util.List;
 //
 //public interface UserService {
+//    String addUsers();
 //    String join(MemberDTO user);
 //    String login(MemberDTO user);
 //    MemberDTO findUserById(String username);

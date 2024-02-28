@@ -18,14 +18,28 @@ public class AuthServiceImpl implements AuthService {
     private AuthServiceImpl(){
         this.users = new HashMap<>();
     }
-    UtilService util = UtilServiceImpl.getInstance();
+    UtilService util;
 
     public static AuthService getInstance(){
         return instance;
     }
     @Override
-    public String join() {
-        return null;
+    public Map<String, MemberDTO> join(Scanner sc) {
+        System.out.print("ID, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, 주소, 직업 순으로 입력\n");
+        String username = sc.next();
+        map.put(username, new MemberBuilder()
+                .username(username)
+                .password(sc.next())
+                .passwordCheck(sc.next())
+                .name(sc.next())
+                .residentRegistrationNumber(sc.next())
+                .phoneNumber(sc.next())
+                .address(sc.next())
+                .job(sc.next())
+                .build())
+                ;
+        users = map;
+        return users;
     }
 
     @Override
@@ -49,6 +63,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Map<String, MemberDTO> addUsers() {
         for(int i = 0; i < 5; i++){
+            this.util = UtilServiceImpl.getInstance();
             String randomUsername = util.createRandomUsername();
             map.put(randomUsername, new MemberBuilder()
                         .username(randomUsername)
@@ -58,11 +73,11 @@ public class AuthServiceImpl implements AuthService {
                         .build());
         }
         users = map;
-        return map;
+        return users;
     }
 
     @Override
-    public MemberDTO findUser(String username) {
+    public MemberDTO findUserById(String username) {
         MemberDTO user = new MemberBuilder()
                 .build();
         return user;
