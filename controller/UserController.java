@@ -20,7 +20,6 @@ public class UserController {
 
     AuthService auth;
 
-
     public void addUser(){
         this.auth = AuthServiceImpl.getInstance();
         users = auth.addUsers();
@@ -31,6 +30,11 @@ public class UserController {
         auth.join(sc);
     }
 
+    public String login(Scanner sc){
+        this.auth = AuthServiceImpl.getInstance();
+        return auth.login(sc);
+    }
+
     public void findUser(String username){
         if(users.containsKey(username)){
             System.out.println(users.get(username));
@@ -38,17 +42,38 @@ public class UserController {
     }
 
     public void printUserList(){
-//        for(Map.Entry<String, MemberDTO> entry : users.entrySet()) {
-//            System.out.println(entry.getValue());
-//        }
         users.forEach((key, value) -> {
             System.out.println(value);
             System.out.println();
         });
     }
-    public void count(){
+    public int count(){
         this.auth = AuthServiceImpl.getInstance();
-        System.out.printf("회원수는 %d 명 입니다.\n", auth.count());
+        return auth.count();
+    }
+
+    public String deleteUser(Scanner sc) {
+        this.auth = AuthServiceImpl.getInstance();
+        return auth.deleteuser(sc.next());
+    }
+
+    public String  changePassword(Scanner sc) {
+        this.auth = AuthServiceImpl.getInstance();
+        return auth.changePassword(sc);
+    }
+
+    public List<MemberDTO> findByName(Scanner sc) {
+        this.auth = AuthServiceImpl.getInstance();
+        return auth.findByName(sc);
+    }
+
+    public Map<String, MemberDTO> findByJob(Scanner sc) {
+        return null;
+    }
+
+    public MemberDTO findByUsername(Scanner sc) {
+        this.auth = AuthServiceImpl.getInstance();
+        return auth.findByUsername(sc.next());
     }
 }
 
