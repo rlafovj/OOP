@@ -1,9 +1,7 @@
 package view;
 
-import builder.MemberBuilder;
-import builder.SubjectBuilder;
-import model.MemberDTO;
-import model.SubjectDTO;
+import model.Member;
+import model.Subject;
 import service.GradeService;
 import service.UtilService;
 import serviceImpl.GradeServiceImpl;
@@ -17,12 +15,12 @@ public class GradeView {
 
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
-        MemberDTO student = new MemberBuilder()
+        Member student = Member.builder()
                 .name(sc.next())
                 .build()
                 ;
 
-        SubjectDTO subjects = new SubjectBuilder()
+        Subject subjects = Subject.builder()
                 .korean(util.createRandomInteger(0, 100))
                 .english(util.createRandomInteger(0, 100))
                 .math(util.createRandomInteger(0, 100))

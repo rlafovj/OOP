@@ -1,23 +1,20 @@
 package serviceImpl;
 
-import builder.MemberBuilder;
-import model.MemberDTO;
+import model.Member;
 import service.AuthService;
 import service.UtilService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AuthServiceImpl implements AuthService {
     private static AuthService instance = new AuthServiceImpl();
 
-    Map<String, MemberDTO> users;
-    Map<String , MemberDTO> map = new HashMap<>();
+    Map<String, Member> users;
+    List<?> userList;
 
     private AuthServiceImpl(){
         this.users = new HashMap<>();
+        this.userList = new ArrayList<>();
     }
     UtilService util;
 
@@ -25,10 +22,10 @@ public class AuthServiceImpl implements AuthService {
         return instance;
     }
     @Override
-    public Map<String, MemberDTO> join(Scanner sc) {
+    public Map<String, Member> join(Scanner sc) {
         System.out.print("ID, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, 주소, 직업 순으로 입력\n");
         String username = sc.next();
-        map.put(username, new MemberBuilder()
+        users.put(username, Member.builder()
                 .username(username)
                 .password(sc.next())
                 .passwordCheck(sc.next())
@@ -39,7 +36,6 @@ public class AuthServiceImpl implements AuthService {
                 .job(sc.next())
                 .build())
                 ;
-        users = map;
         return users;
     }
 
@@ -57,23 +53,22 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Map<String, MemberDTO> addUsers() {
+    public Map<String, Member> addUsers() {
         for(int i = 0; i < 5; i++){
             this.util = UtilServiceImpl.getInstance();
             String randomUsername = util.createRandomUsername();
-            map.put(randomUsername, new MemberBuilder()
+            users.put(randomUsername, Member.builder()
                         .username(randomUsername)
                         .password("1")
                         .passwordCheck("1")
                         .name(util.createRandomName())
                         .build());
         }
-        users = map;
         return users;
     }
 
     @Override
-    public Map<String, MemberDTO> getUserMap() {
+    public Map<String, Member> getUserMap() {
         //users.forEach(k, v)->System.out.println("{"+K+","+v+);
         return users;
     }
@@ -111,7 +106,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public List<MemberDTO> findByName(Scanner sc) {
+    public List<Member> findByName(Scanner sc) {
         System.out.print("찾으려는 이름 : ");
         String inputName = sc.next();
 
@@ -119,7 +114,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public MemberDTO findByUsername(String username) {
+    public Member findByUsername(String username) {
         return users.get(username);
     }
 

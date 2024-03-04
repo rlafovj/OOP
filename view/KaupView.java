@@ -1,7 +1,6 @@
 package view;
 
-import builder.MemberBuilder;
-import model.MemberDTO;
+import model.Member;
 import service.KaupService;
 import service.UtilService;
 import serviceImpl.KaupServiceImpl;
@@ -13,7 +12,7 @@ public class KaupView {
     //카우프 지수 구하는 프로그램
     public static void main(Scanner sc){
         UtilService util = UtilServiceImpl.getInstance();
-        MemberDTO member = new MemberBuilder()
+        Member member = Member.builder()
                 .height(util.createRandomDouble(150, 50))
                 .weight(util.createRandomDouble(30, 70))
                 .build()

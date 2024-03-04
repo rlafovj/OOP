@@ -1,21 +1,17 @@
 package controller;
 
-import model.MemberDTO;
+import model.Member;
 import service.AuthService;
-//import service.UserService;
 import serviceImpl.AuthServiceImpl;
-//import serviceImpl.UserServiceImpl;
 
 import java.util.*;
 
 public class UserController {
 
-    private Map<String, MemberDTO> users;
-//    private List<MemberDTO> userList;
+    private Map<String, Member> users;
 
     public UserController() {
         this.users = new HashMap<>();
-//        this.userList = new ArrayList<>();
     }
 
     AuthService auth;
@@ -62,16 +58,16 @@ public class UserController {
         return auth.changePassword(sc);
     }
 
-    public List<MemberDTO> findByName(Scanner sc) {
+    public List<Member> findByName(Scanner sc) {
         this.auth = AuthServiceImpl.getInstance();
         return auth.findByName(sc);
     }
 
-    public Map<String, MemberDTO> findByJob(Scanner sc) {
+    public Map<String, Member> findByJob(Scanner sc) {
         return null;
     }
 
-    public MemberDTO findByUsername(Scanner sc) {
+    public Member findByUsername(Scanner sc) {
         this.auth = AuthServiceImpl.getInstance();
         return auth.findByUsername(sc.next());
     }

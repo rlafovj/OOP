@@ -1,7 +1,6 @@
 package controller;
 
-import builder.AccountBuilder;
-import model.AccountDTO;
+import model.Account;
 import service.AccountService;
 
 import java.util.List;
@@ -10,8 +9,8 @@ import java.util.Scanner;
 public class AccountController {
   AccountService accountService;
 
-  public String  id(Scanner sc){
-    return accountService.deposit(new AccountBuilder()
+  public String id(Scanner sc){
+    return accountService.deposit(Account.builder()
                     .id(sc.nextLong())
                     .accountNumber(sc.next())
                     .accountHolder(sc.next())
@@ -21,8 +20,8 @@ public class AccountController {
     );
   }
 
-  public String  createAccount(Scanner sc) {
-    return accountService.createAccount(new AccountBuilder()
+  public String createAccount(Scanner sc) {
+    return accountService.createAccount(Account.builder()
             .id(sc.nextLong())
             .accountNumber(sc.next())
             .accountHolder(sc.next())
@@ -32,8 +31,8 @@ public class AccountController {
     );
   }
 
-  public String  deposit(Scanner sc) {
-    return accountService.deposit(new AccountBuilder()
+  public String deposit(Scanner sc) {
+    return accountService.deposit(Account.builder()
             .id(sc.nextLong())
             .accountNumber(sc.next())
             .accountHolder(sc.next())
@@ -43,8 +42,8 @@ public class AccountController {
     );
   }
 
-  public String  withdraw(Scanner sc) {
-    return accountService.withdraw(new AccountBuilder()
+  public String withdraw(Scanner sc) {
+    return accountService.withdraw(Account.builder()
             .id(sc.nextLong())
             .accountNumber(sc.next())
             .accountHolder(sc.next())
@@ -58,11 +57,11 @@ public class AccountController {
     return accountService.getBalance(sc.next());
   }
 
-  public String  removeAccount(Scanner sc) {
+  public String removeAccount(Scanner sc) {
     return accountService.removeAccount(sc.next());
   }
 
-  public List<AccountDTO> getAccount(){
+  public List<Account> getAccount(){
     return null;
   }
 }
