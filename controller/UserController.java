@@ -8,7 +8,7 @@ import java.util.*;
 
 public class UserController {
 
-    private Map<String, Member> users;
+    private Map<String, ?> users;
 
     public UserController() {
         this.users = new HashMap<>();
@@ -58,7 +58,7 @@ public class UserController {
         return auth.changePassword(sc);
     }
 
-    public List<Member> findByName(Scanner sc) {
+    public List<?> findByName(Scanner sc) {
         this.auth = AuthServiceImpl.getInstance();
         return auth.findByName(sc);
     }
